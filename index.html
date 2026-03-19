@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Phoenix Mobiles, Services & Gadgets — Hoskote's premier mobile repair centre. Expert screen, battery, software repairs. Quality phones & accessories.">
+  <meta name="theme-color" content="#020309">
+  <title>Phoenix Mobiles &amp; Services | Revive. Repair. Rise.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Outfit:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ═══════════════════ FIRE CURSOR TRAIL ═══════════════════ -->
+  <canvas id="fireTrailCanvas" aria-hidden="true"></canvas>
+
+  <!-- ═══════════════════ SCROLL BAR ═══════════════════ -->
+  <div id="scrollBar" aria-hidden="true"></div>
+
+  <!-- ═══════════════════ PRELOADER ═══════════════════ -->
+  <div id="preloader" role="status" aria-label="Loading">
+    <div class="pl-bg"></div>
+    <div class="pl-inner">
+      <div class="pl-rings" aria-hidden="true">
+        <div class="pl-ring r1"></div>
+        <div class="pl-ring r2"></div>
+        <div class="pl-ring r3"></div>
+      </div>
+      <div class="pl-logo-wrap">
+        <img src="assets/logo.jpeg" alt="Phoenix Mobiles" class="pl-logo" width="180" height="135">
+        <div class="pl-logo-sheen" aria-hidden="true"></div>
+      </div>
+      <p class="pl-name">PHOENIX</p>
+      <p class="pl-sub">MOBILES &bull; SERVICES &bull; GADGETS</p>
+      <div class="pl-bar-wrap"><div class="pl-bar" id="plBar"></div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ CUSTOM CURSOR ═══════════════════ -->
+  <div id="cursor" aria-hidden="true">
+    <div class="cur-dot"></div>
+    <div class="cur-ring"></div>
+  </div>
+
+  <!-- ═══════════════════ EAGLE INTRO SEQUENCE ═══════════════════ -->
+  <div id="eagleIntro" aria-hidden="true">
+    <canvas id="eagleCanvas"></canvas>
+    <div class="eagle-text" id="eagleText">
+      <span class="et-word">Revive.</span>
+      <span class="et-word et-gold">Repair.</span>
+      <span class="et-word">Rise.</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ NAVIGATION ═══════════════════ -->
+  <header id="header" role="banner">
+    <nav id="navbar" aria-label="Main navigation">
+      <div class="nav-wrap">
+        <a href="#hero" class="nav-logo" aria-label="Phoenix Mobiles Home">
+          <img src="assets/logo.jpeg" alt="Phoenix" class="nav-logo-img" width="52" height="39">
+          <div class="nav-brand">
+            <span class="nb-main">PHOENIX</span>
+            <span class="nb-sub">Mobiles &amp; Services</span>
+          </div>
+        </a>
+        <button class="nav-burger" id="navBurger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navMenu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="nav-menu" id="navMenu">
+          <ul class="nav-list" role="list">
+            <li><a href="#services" class="nav-link">Services</a></li>
+            <li><a href="#why-us"   class="nav-link">Why Us</a></li>
+            <li><a href="#process"  class="nav-link">Process</a></li>
+            <li><a href="#sales"    class="nav-link">Shop</a></li>
+            <li><a href="#about"    class="nav-link">About</a></li>
+            <li><a href="#contact"  class="nav-link">Contact</a></li>
+          </ul>
+          <a href="tel:+917019746943" class="nav-cta" data-magnetic>&#128222; Call Now</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ═══════════════════ HERO ═══════════════════ -->
+  <section id="hero" aria-label="Hero">
+    <canvas id="heroCanvas" aria-hidden="true"></canvas>
+    <canvas id="heroFireCanvas" aria-hidden="true" class="section-fire"></canvas>
+    <div id="heroStars" aria-hidden="true"></div>
+    <div class="hero-sweep s1" aria-hidden="true"></div>
+    <div class="hero-sweep s2" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+      <div class="hero-logo-wrap" id="heroLogoWrap">
+        <div class="hlw-ring r1" aria-hidden="true"></div>
+        <div class="hlw-ring r2" aria-hidden="true"></div>
+        <div class="hlw-ring r3" aria-hidden="true"></div>
+        <div class="hlw-shock" aria-hidden="true"></div>
+        <img src="assets/logo.jpeg" alt="Phoenix Mobiles &amp; Services — Revive. Repair. Rise." class="hero-logo-img" id="heroLogoImg" width="340" height="255">
+        <div class="hlw-shimmer" aria-hidden="true"></div>
+        <div class="hlw-corona" aria-hidden="true"></div>
+      </div>
+
+      <div class="hero-text" id="heroText">
+        <p class="hero-eyebrow" id="heroEyebrow">
+          <span class="ey-line"></span>HOSKOTE'S FINEST REPAIR SPECIALISTS<span class="ey-line r"></span>
+        </p>
+        <h1 class="hero-h1" id="heroH1">
+          <span class="hh-line"><span class="hh-inner">Revive.</span></span>
+          <span class="hh-line gold-text"><span class="hh-inner">Repair.</span></span>
+          <span class="hh-line"><span class="hh-inner">Rise.</span></span>
+        </h1>
+        <p class="hero-sub" id="heroSub">Expert repairs &middot; Genuine parts &middot; Same-day service<br>
+          <em id="heroTypewriter"></em></p>
+        <div class="hero-actions" id="heroActions">
+          <a href="#services" class="btn-gold" data-magnetic>
+            <span class="bg-fill"></span><span class="bg-text">Explore Services</span><span class="bg-arr">&#8594;</span>
+          </a>
+          <a href="https://wa.me/917019746943?text=Hello%20Phoenix%20Mobiles!%20I%20need%20a%20repair." target="_blank" rel="noopener" class="btn-outline" data-magnetic>
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp Us
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-stats" id="heroStats">
+        <div class="hs-item"><span class="hs-num" data-count="1200">0</span><span class="hs-sfx">+</span><span class="hs-lbl">Repaired</span></div>
+        <div class="hs-div"></div>
+        <div class="hs-item"><span class="hs-num" data-count="98">0</span><span class="hs-sfx">%</span><span class="hs-lbl">Success</span></div>
+        <div class="hs-div"></div>
+        <div class="hs-item"><span class="hs-num" data-count="5">0</span><span class="hs-sfx">&#9733;</span><span class="hs-lbl">Rating</span></div>
+        <div class="hs-div"></div>
+        <div class="hs-item"><span class="hs-num" data-count="4">0</span><span class="hs-sfx">+</span><span class="hs-lbl">Years</span></div>
+      </div>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">
+      <div class="sh-mouse"><div class="sh-wheel"></div></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ SERVICES ═══════════════════ -->
+  <section id="services" aria-labelledby="srv-h2">
+    <canvas class="section-fire" data-fire="embers" aria-hidden="true"></canvas>
+    <div class="container">
+      <div class="sec-label" data-reveal><span class="sl"></span>What We Fix<span class="sl"></span></div>
+      <h2 class="sec-title" id="srv-h2" data-reveal>Our <span class="gold-text">Repair Services</span></h2>
+      <p class="sec-sub" data-reveal>From shattered screens to circuit-level recovery — we breathe life back into every device.</p>
+
+      <div class="srv-grid">
+        <article class="srv-card" data-tilt aria-label="Screen Replacement">
+          <div class="sc-glow"></div><div class="sc-border"></div>
+          <div class="sc-icon-wrap"><div class="sc-icon-ring"></div>
+            <svg class="sc-icon" viewBox="0 0 56 56" fill="none" aria-hidden="true"><rect x="8" y="4" width="40" height="48" rx="5" stroke="currentColor" stroke-width="2.5" fill="none"/><rect x="14" y="10" width="28" height="30" rx="2" fill="currentColor" opacity="0.1"/><path d="M21 46h14M28 4h.01" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M22 23l4 4 8-8" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Screen Replacement</h3>
+          <p>Cracked or dead display replaced with original-grade AMOLED &amp; LCD panels — pixel-perfect from day one.</p>
+          <span class="sc-tag">Most Popular</span>
+          <div class="sc-sparks"></div>
+        </article>
+
+        <article class="srv-card" data-tilt aria-label="Battery Replacement">
+          <div class="sc-glow"></div><div class="sc-border"></div>
+          <div class="sc-icon-wrap"><div class="sc-icon-ring"></div>
+            <svg class="sc-icon" viewBox="0 0 56 56" fill="none" aria-hidden="true"><rect x="16" y="8" width="22" height="38" rx="4" stroke="currentColor" stroke-width="2.5" fill="none"/><rect x="20" y="12" width="14" height="26" rx="2" fill="currentColor" opacity="0.1"/><path d="M24 5h8v3h-8z" fill="currentColor" opacity="0.4"/><path d="M28 17v12M23 25l5 6 5-6" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Battery Replacement</h3>
+          <p>Rapid drain or swollen cells? Genuine high-capacity batteries restore your phone's original stamina.</p>
+          <span class="sc-tag">Same Day</span>
+          <div class="sc-sparks"></div>
+        </article>
+
+        <article class="srv-card" data-tilt aria-label="Charging Port Repair">
+          <div class="sc-glow"></div><div class="sc-border"></div>
+          <div class="sc-icon-wrap"><div class="sc-icon-ring"></div>
+            <svg class="sc-icon" viewBox="0 0 56 56" fill="none" aria-hidden="true"><path d="M28 40v12M22 52h12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><rect x="10" y="8" width="36" height="34" rx="5" stroke="currentColor" stroke-width="2.5" fill="none"/><circle cx="28" cy="25" r="8" stroke="#D4AF37" stroke-width="2" fill="none"/><path d="M28 19v6h5" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Charging Port Repair</h3>
+          <p>Loose connection or no charge? We clean, repair or replace your charging port with surgical precision.</p>
+          <span class="sc-tag">Quick Fix</span>
+          <div class="sc-sparks"></div>
+        </article>
+
+        <article class="srv-card" data-tilt aria-label="Software Issues">
+          <div class="sc-glow"></div><div class="sc-border"></div>
+          <div class="sc-icon-wrap"><div class="sc-icon-ring"></div>
+            <svg class="sc-icon" viewBox="0 0 56 56" fill="none" aria-hidden="true"><rect x="6" y="14" width="44" height="30" rx="4" stroke="currentColor" stroke-width="2.5" fill="none"/><path d="M20 29l6-6 6 6 8-8" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 44h12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Software &amp; OS Issues</h3>
+          <p>Boot loops, virus removal, OS updates — we fix all software gremlins fast without losing your data.</p>
+          <span class="sc-tag">Expert Care</span>
+          <div class="sc-sparks"></div>
+        </article>
+
+        <article class="srv-card" data-tilt aria-label="Water Damage Recovery">
+          <div class="sc-glow"></div><div class="sc-border"></div>
+          <div class="sc-icon-wrap"><div class="sc-icon-ring"></div>
+            <svg class="sc-icon" viewBox="0 0 56 56" fill="none" aria-hidden="true"><path d="M10 22 Q10 8 28 6 Q46 8 46 22 Q46 42 28 50 Q10 42 10 22Z" stroke="currentColor" stroke-width="2.5" fill="none"/><path d="M20 28 Q28 34 36 28" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" fill="none"/><path d="M22 14 Q25 9 28 9 Q31 9 34 14" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+          </div>
+          <h3>Water Damage Recovery</h3>
+          <p>Ultrasonic cleaning and micro-soldering rescue devices others call dead. Act fast — we save them.</p>
+          <span class="sc-tag">Specialist</span>
+          <div class="sc-sparks"></div>
+        </article>
+
+        <article class="srv-card" data-tilt aria-label="Full Diagnostics">
+          <div class="sc-glow"></div><div class="sc-border"></div>
+          <div class="sc-icon-wrap"><div class="sc-icon-ring"></div>
+            <svg class="sc-icon" viewBox="0 0 56 56" fill="none" aria-hidden="true"><circle cx="28" cy="28" r="18" stroke="currentColor" stroke-width="2.5" fill="none"/><path d="M28 18v10l7 7" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 10l-5-5M40 10l5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.4"/><circle cx="28" cy="28" r="3" fill="#D4AF37"/></svg>
+          </div>
+          <h3>Full Diagnostics</h3>
+          <p>20-point diagnostic covers every hardware and software issue before we fix anything. Completely free.</p>
+          <span class="sc-tag">Free Check</span>
+          <div class="sc-sparks"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ WHY US ═══════════════════ -->
+  <section id="why-us" aria-labelledby="why-h2">
+    <canvas class="section-fire" data-fire="radial" aria-hidden="true"></canvas>
+    <div class="container">
+      <div class="stats-band" data-reveal>
+        <div class="sb-item"><span class="sb-num" data-count="1200">0</span><span class="sb-sfx">+</span><span class="sb-lbl">Devices Repaired</span></div>
+        <div class="sb-div"></div>
+        <div class="sb-item"><span class="sb-num" data-count="98">0</span><span class="sb-sfx">%</span><span class="sb-lbl">Success Rate</span></div>
+        <div class="sb-div"></div>
+        <div class="sb-item"><span class="sb-num" data-count="5">0</span><span class="sb-sfx">&#9733;</span><span class="sb-lbl">Google Rating</span></div>
+        <div class="sb-div"></div>
+        <div class="sb-item"><span class="sb-num" data-count="4">0</span><span class="sb-sfx">+</span><span class="sb-lbl">Years Trusted</span></div>
+      </div>
+
+      <div class="sec-label" data-reveal><span class="sl"></span>Our Promise<span class="sl"></span></div>
+      <h2 class="sec-title" id="why-h2" data-reveal>Forged in <span class="gold-text">Excellence</span></h2>
+      <p class="sec-sub" data-reveal>Five pillars every Phoenix repair is built on — not promises, proof.</p>
+
+      <div class="why-grid">
+        <div class="why-card" data-tilt data-reveal-stagger="0"><div class="wc-n">01</div><div class="wc-i"><svg viewBox="0 0 44 44" fill="none"><path d="M22 4L4 12v11c0 9.1 7.5 17.6 18 19.6C33.5 40.6 40 32.1 40 23V12L22 4zm-3.5 24.5l-6.5-6.5 2.4-2.4 4.1 4.1 10.6-10.6 2.4 2.4-13 13z" fill="currentColor"/></svg></div><h3>Genuine Parts Only</h3><p>OEM-certified components exclusively. Zero counterfeits touch your device — ever.</p></div>
+        <div class="why-card" data-tilt data-reveal-stagger="1"><div class="wc-n">02</div><div class="wc-i"><svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="17" stroke="currentColor" stroke-width="2.5" fill="none"/><path d="M15 22l5 5 9-9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Skilled Technicians</h3><p>Brand-trained engineers handle everything from swaps to motherboard micro-soldering.</p></div>
+        <div class="why-card" data-tilt data-reveal-stagger="2"><div class="wc-n">03</div><div class="wc-i"><svg viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="17" stroke="currentColor" stroke-width="2.5" fill="none"/><path d="M22 13v9l6 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></div><h3>Fast Turnaround</h3><p>Most repairs done in under 3 hours. We respect your time as much as your device.</p></div>
+        <div class="why-card" data-tilt data-reveal-stagger="3"><div class="wc-n">04</div><div class="wc-i"><svg viewBox="0 0 44 44" fill="none"><path d="M8 22Q8 10 22 8Q36 10 36 22Q36 36 22 38Q8 36 8 22Z" stroke="currentColor" stroke-width="2.5" fill="none"/><path d="M15 22h14M22 15v14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></div><h3>Transparent Pricing</h3><p>Free diagnostic. Honest quote before we start. Zero hidden charges — guaranteed.</p></div>
+        <div class="why-card" data-tilt data-reveal-stagger="4"><div class="wc-n">05</div><div class="wc-i"><svg viewBox="0 0 44 44" fill="none"><path d="M22 6l4 8 9 1.3-6.5 6.4 1.5 9-8-4.2-8 4.2 1.5-9L9 15.3 18 14Z" stroke="currentColor" stroke-width="2" fill="none"/></svg></div><h3>Repair Warranty</h3><p>Every repair is backed by our service warranty. Fails? We fix it again — no charge.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ PROCESS ═══════════════════ -->
+  <section id="process" aria-labelledby="proc-h2">
+    <canvas class="section-fire" data-fire="trail" aria-hidden="true"></canvas>
+    <div class="container">
+      <div class="sec-label" data-reveal><span class="sl"></span>How It Works<span class="sl"></span></div>
+      <h2 class="sec-title" id="proc-h2" data-reveal>The Phoenix <span class="gold-text">Repair Journey</span></h2>
+      <p class="sec-sub" data-reveal>Transparent. Seamless. From broken to reborn — every step guaranteed.</p>
+
+      <div class="proc-rail" id="processRail">
+        <svg class="proc-svg" id="processSvgLine" viewBox="0 0 4 800" preserveAspectRatio="none" aria-hidden="true">
+          <path id="processPathBg" d="M2,0 L2,800" stroke="rgba(212,175,55,0.08)" stroke-width="2" fill="none"/>
+          <path id="processPath"   d="M2,0 L2,800" stroke="url(#procGold)" stroke-width="2.5" fill="none" stroke-dasharray="800" stroke-dashoffset="800"/>
+          <defs><linearGradient id="procGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8B6914"/><stop offset="40%" stop-color="#D4AF37"/><stop offset="60%" stop-color="#FFD700"/><stop offset="100%" stop-color="#D4AF37"/></linearGradient></defs>
+        </svg>
+
+        <div class="proc-step" data-proc="0">
+          <div class="ps-node"><div class="ps-ring"></div><div class="ps-core"><svg viewBox="0 0 32 32" fill="none"><path d="M8 16Q12 8 18 11Q22 6 24 13Q28 14 26 19Q24 23 18 23H10Q6 23 6 19Q6 16 8 16Z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M13 19l3-3 4 4" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+          <div class="ps-body"><span class="ps-n">01</span><h3>Free Diagnosis</h3><p>Walk in — no appointment needed. Thorough hardware &amp; software diagnostic, clear honest quote. Zero cost, zero obligation.</p></div>
+        </div>
+        <div class="proc-step" data-proc="1">
+          <div class="ps-node"><div class="ps-ring"></div><div class="ps-core"><svg viewBox="0 0 32 32" fill="none"><path d="M20 8l4 4L12 24H8v-4L20 8Z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M17 11l4 4" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/></svg></div></div>
+          <div class="ps-body"><span class="ps-n">02</span><h3>Precision Repair</h3><p>Genuine parts, professional tools, zero shortcuts. Your device handled with meticulous care and expertise.</p></div>
+        </div>
+        <div class="proc-step" data-proc="2">
+          <div class="ps-node"><div class="ps-ring"></div><div class="ps-core"><svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="2" fill="none"/><path d="M10 16l5 5 8-8" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+          <div class="ps-body"><span class="ps-n">03</span><h3>Rigorous Testing</h3><p>20-point quality check — display, touch, battery, cameras, speakers, sensors. All verified before handover.</p></div>
+        </div>
+        <div class="proc-step" data-proc="3">
+          <div class="ps-node"><div class="ps-ring"></div><div class="ps-core"><svg viewBox="0 0 32 32" fill="none"><rect x="9" y="5" width="14" height="22" rx="3" stroke="currentColor" stroke-width="2" fill="none"/><path d="M13 24h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.4"/><path d="M13 11h6M13 15h4" stroke="#D4AF37" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+          <div class="ps-body"><span class="ps-n">04</span><h3>Reborn. Ready.</h3><p>Device reborn, warranty issued, you're notified instantly. Walk out with something that feels brand new.</p></div>
+        </div>
+      </div>
+
+      <div class="proc-cta" data-reveal>
+        <a href="https://wa.me/917019746943?text=Hello!%20I%20want%20to%20book%20a%20repair." target="_blank" rel="noopener" class="btn-gold" data-magnetic>
+          <span class="bg-fill"></span><span class="bg-text">Book a Repair on WhatsApp</span><span class="bg-arr">&#8594;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ DEVICES ═══════════════════ -->
+  <section id="devices" aria-labelledby="dev-h2">
+    <canvas class="section-fire" data-fire="shimmer" aria-hidden="true"></canvas>
+    <div class="container">
+      <div class="sec-label" data-reveal><span class="sl"></span>We Service<span class="sl"></span></div>
+      <h2 class="sec-title" id="dev-h2" data-reveal>All Your <span class="gold-text">Devices</span></h2>
+      <p class="sec-sub" data-reveal>Whatever you carry — we can fix it and bring it back to life.</p>
+      <div class="dev-grid">
+        <div class="dev-tile" data-reveal-stagger="0"><div class="dt-glow"></div><div class="dt-icon"><svg viewBox="0 0 80 80" fill="none"><rect x="22" y="8" width="36" height="64" rx="6" stroke="currentColor" stroke-width="2.5" fill="none"/><rect x="28" y="16" width="24" height="42" rx="2" fill="currentColor" opacity="0.07"/><path d="M33 72h14M35 10h10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M34 34l4 4 8-8" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Smartphones</h3><p>All brands &middot; Android &amp; iOS</p></div>
+        <div class="dev-tile" data-reveal-stagger="1"><div class="dt-glow"></div><div class="dt-icon"><svg viewBox="0 0 80 80" fill="none"><rect x="10" y="16" width="60" height="44" rx="6" stroke="currentColor" stroke-width="2.5" fill="none"/><rect x="16" y="22" width="48" height="32" rx="2" fill="currentColor" opacity="0.07"/><path d="M30 64h20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="40" cy="38" r="5" stroke="#D4AF37" stroke-width="2" fill="none"/></svg></div><h3>Tablets</h3><p>iPads &middot; Android &middot; All sizes</p></div>
+        <div class="dev-tile" data-reveal-stagger="2"><div class="dt-glow"></div><div class="dt-icon"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="36" r="18" stroke="currentColor" stroke-width="2.5" fill="none"/><path d="M34 36l5 5 9-9" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 54v12M30 66h20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></div><h3>Wearables</h3><p>Smartwatches &middot; Earbuds</p></div>
+        <div class="dev-tile" data-reveal-stagger="3"><div class="dt-glow"></div><div class="dt-icon"><svg viewBox="0 0 80 80" fill="none"><rect x="18" y="22" width="44" height="36" rx="4" stroke="currentColor" stroke-width="2.5" fill="none"/><rect x="24" y="28" width="32" height="24" rx="2" fill="currentColor" opacity="0.07"/><path d="M30 58v8M50 58v8M24 66h32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M32 40h16" stroke="#D4AF37" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Accessories</h3><p>Chargers &middot; Earphones &middot; Powerbanks</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ HORIZONTAL GALLERY ═══════════════════ -->
+  <section id="gallery-section" aria-label="Feature gallery">
+    <canvas class="section-fire" data-fire="streaks" aria-hidden="true"></canvas>
+    <div class="gallery-outer" id="galleryOuter">
+      <div class="gallery-sticky" id="galleryStickyEl">
+        <div class="gallery-header">
+          <p class="sec-eyebrow">The Phoenix Way</p>
+          <h2 class="sec-title">Scroll to <span class="gold-text">Experience</span></h2>
+        </div>
+        <div class="gallery-track" id="galleryTrack" role="list">
+          <div class="gl-card" role="listitem"><div class="glc-inner"><div class="glc-n">01</div><span class="glc-em">&#128293;</span><h3>We Revive Devices</h3><p>Like the phoenix rises, every device that enters leaves reborn — stronger, faster, fully alive.</p></div></div>
+          <div class="gl-card" role="listitem"><div class="glc-inner"><div class="glc-n">02</div><span class="glc-em">&#9889;</span><h3>Lightning Turnaround</h3><p>Drop in before lunch. Collect a perfectly repaired phone the same afternoon. Speed never compromises quality.</p></div></div>
+          <div class="gl-card" role="listitem"><div class="glc-inner"><div class="glc-n">03</div><span class="glc-em">&#128737;</span><h3>Backed by Warranty</h3><p>Every repair is guaranteed. If it fails after us, we fix it again — no argument, no charge.</p></div></div>
+          <div class="gl-card" role="listitem"><div class="glc-inner"><div class="glc-n">04</div><span class="glc-em">&#129309;</span><h3>Brutally Honest</h3><p>If your device isn't worth repairing, we tell you straight. We'd rather earn your trust than your money.</p></div></div>
+          <div class="gl-card" role="listitem"><div class="glc-inner"><div class="glc-n">05</div><span class="glc-em">&#128081;</span><h3>Local Pride</h3><p>We live and work in Hoskote. This community is our family — and every repair reflects that.</p></div></div>
+        </div>
+        <div class="gallery-progress" aria-hidden="true"><div class="gp-bar" id="galleryProgressBar"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ SALES ═══════════════════ -->
+  <section id="sales" aria-labelledby="sales-h2">
+    <canvas class="section-fire" data-fire="sparks" aria-hidden="true"></canvas>
+    <div class="container">
+      <div class="sales-grid">
+        <div class="sales-text" data-reveal-left>
+          <div class="sec-label" style="justify-content:flex-start"><span class="sl" style="max-width:36px"></span>Also In Store</div>
+          <h2 class="sec-title" id="sales-h2" style="text-align:left">Premium Phones &amp;<br><span class="gold-text">Genuine Gadgets</span></h2>
+          <p class="sales-para">Beyond repairs, Phoenix is your one-stop destination for the latest smartphones across every budget, plus authentic accessories.</p>
+          <div class="sales-features">
+            <div class="sf-row"><span class="sf-dot"></span><span>All major brands — new arrivals always in stock</span></div>
+            <div class="sf-row"><span class="sf-dot"></span><span>Original cases, chargers &amp; screen protectors</span></div>
+            <div class="sf-row"><span class="sf-dot"></span><span>EMI options on select devices</span></div>
+            <div class="sf-row"><span class="sf-dot"></span><span>Exchange &amp; upgrade programme for old devices</span></div>
+            <div class="sf-row"><span class="sf-dot"></span><span>All UPI, card and cash payments accepted</span></div>
+          </div>
+          <a href="https://wa.me/917019746943?text=Hello!%20What%20phones%20are%20in%20stock?" target="_blank" rel="noopener" class="btn-gold" data-magnetic style="display:inline-flex;margin-top:2rem">
+            <span class="bg-fill"></span><span class="bg-text">Check Stock on WhatsApp</span><span class="bg-arr">&#8594;</span>
+          </a>
+        </div>
+        <div class="sales-visual" data-reveal-right>
+          <div class="sv-logo">
+            <div class="sv-ring r1"></div><div class="sv-ring r2"></div>
+            <img src="assets/logo.jpeg" alt="Phoenix Mobiles — Mobiles Services Gadgets" class="sv-img" width="380" height="285">
+            <div class="sv-tagline"><span>MOBILES</span><span class="sv-sep">|</span><span>SERVICES</span><span class="sv-sep">|</span><span>GADGETS</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="marquee-strip" aria-hidden="true">
+      <div class="mq-inner">
+        <span>Apple</span><span class="md">&#9670;</span><span>Samsung</span><span class="md">&#9670;</span><span>OnePlus</span><span class="md">&#9670;</span><span>Vivo</span><span class="md">&#9670;</span><span>Realme</span><span class="md">&#9670;</span><span>Oppo</span><span class="md">&#9670;</span><span>Redmi</span><span class="md">&#9670;</span><span>Poco</span><span class="md">&#9670;</span><span>iQOO</span><span class="md">&#9670;</span><span>Nothing</span><span class="md">&#9670;</span><span>Motorola</span><span class="md">&#9670;</span><span>Nokia</span><span class="md">&#9670;</span>
+        <span>Apple</span><span class="md">&#9670;</span><span>Samsung</span><span class="md">&#9670;</span><span>OnePlus</span><span class="md">&#9670;</span><span>Vivo</span><span class="md">&#9670;</span><span>Realme</span><span class="md">&#9670;</span><span>Oppo</span><span class="md">&#9670;</span><span>Redmi</span><span class="md">&#9670;</span><span>Poco</span><span class="md">&#9670;</span><span>iQOO</span><span class="md">&#9670;</span><span>Nothing</span><span class="md">&#9670;</span><span>Motorola</span><span class="md">&#9670;</span><span>Nokia</span><span class="md">&#9670;</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ ABOUT ═══════════════════ -->
+  <section id="about" aria-labelledby="about-h2">
+    <canvas class="section-fire" data-fire="drift" aria-hidden="true"></canvas>
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text" data-reveal-left>
+          <div class="sec-label" style="justify-content:flex-start"><span class="sl" style="max-width:36px"></span>Our Story</div>
+          <h2 class="sec-title" id="about-h2" style="text-align:left">Born from <span class="gold-text">Passion</span>,<br>Built on <span class="gold-text">Trust</span></h2>
+          <p class="about-p">Phoenix Mobiles was built on a simple belief — Hoskote deserves world-class device care. We grew from a passion for technology into the neighbourhood's most trusted repair destination.</p>
+          <p class="about-p">The phoenix is our symbol for a reason. Every broken device that enters leaves revived, restored, and reborn. That transformation is what we live for.</p>
+          <div class="about-hours">
+            <h4>&#128345; Store Hours</h4>
+            <div class="ah-rows">
+              <span>Monday – Saturday</span><span class="ah-t">9:00 AM – 9:00 PM</span>
+              <span>Sunday</span><span class="ah-t">10:00 AM – 7:00 PM</span>
+            </div>
+          </div>
+          <div class="about-tags">
+            <span class="a-tag">&#127881; Festive Repair Discounts</span>
+            <span class="a-tag">&#128179; All UPI &amp; Card Payments</span>
+            <span class="a-tag">&#128222; Free Quote on WhatsApp</span>
+          </div>
+        </div>
+        <div class="about-cards" data-reveal-right>
+          <div class="ac-card ac-1"><div class="ac-gl"></div><span class="ac-ic">&#127942;</span><div><h4>Top Rated in Hoskote</h4><p>5-star rated by hundreds of verified Google customers</p></div></div>
+          <div class="ac-card ac-2"><div class="ac-gl"></div><span class="ac-ic">&#128295;</span><div><h4>1,200+ Repairs Done</h4><p>Every device a story of revival we take personally</p></div></div>
+          <div class="ac-card ac-3"><div class="ac-gl"></div><span class="ac-ic">&#128081;</span><div><h4>Trusted by the Community</h4><p>Neighbours refer neighbours. Word-of-mouth is our greatest honour.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ CONTACT ═══════════════════ -->
+  <section id="contact" aria-labelledby="contact-h2">
+    <canvas class="section-fire" data-fire="horizon" aria-hidden="true"></canvas>
+    <div class="container">
+      <div class="sec-label" data-reveal><span class="sl"></span>Find Us<span class="sl"></span></div>
+      <h2 class="sec-title" id="contact-h2" data-reveal>Visit the <span class="gold-text">Phoenix</span></h2>
+      <p class="sec-sub" data-reveal>Right in the heart of Hoskote — easy to find, always ready to help.</p>
+
+      <div class="contact-layout">
+        <!-- Info column -->
+        <div class="contact-info" data-reveal-left>
+          <div class="ci-card">
+            <div class="ci-item">
+              <div class="ci-icon">&#128205;</div>
+              <div class="ci-body">
+                <h4>Address</h4>
+                <p>Chikke Gowda Complex,<br>Near T G Extension,<br>Kammavari Pete, Hoskote,<br>Bengaluru, Karnataka 562114</p>
+              </div>
+            </div>
+            <div class="ci-item">
+              <div class="ci-icon">&#128222;</div>
+              <div class="ci-body">
+                <h4>Phone</h4>
+                <a href="tel:+917019746943" class="ci-phone">+91 70197 46943</a>
+              </div>
+            </div>
+            <div class="ci-item">
+              <div class="ci-icon">&#128345;</div>
+              <div class="ci-body">
+                <h4>Hours</h4>
+                <p>Mon – Sat &nbsp;9:00 AM – 9:00 PM</p>
+                <p>Sunday &nbsp;&nbsp;&nbsp;10:00 AM – 7:00 PM</p>
+              </div>
+            </div>
+          </div>
+          <div class="ci-actions">
+            <a href="tel:+917019746943" class="btn-gold" data-magnetic>
+              <span class="bg-fill"></span><span class="bg-text">&#128222;&nbsp;Call Now</span>
+            </a>
+            <a href="https://wa.me/917019746943?text=Hello%20Phoenix%20Mobiles!" target="_blank" rel="noopener" class="btn-outline" data-magnetic>
+              <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+            <a href="https://maps.app.goo.gl/thmNboJA1idjC2ci7" target="_blank" rel="noopener" class="btn-outline" data-magnetic>&#128506;&nbsp;Directions</a>
+          </div>
+        </div>
+
+        <!-- Map column -->
+        <div class="contact-map" data-reveal-right>
+          <div class="map-shell">
+            <iframe
+              title="Phoenix Mobiles &amp; Services Location"
+              src="https://maps.google.com/maps?q=Phoenix+Mobiles+Services+Gadgets+Hoskote+Karnataka&output=embed&z=17"
+              width="100%" height="100%" style="border:0;"
+              allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ CTA ═══════════════════ -->
+  <section id="cta" aria-label="Call to action">
+    <canvas id="ctaCanvas" aria-hidden="true"></canvas>
+    <div class="cta-inner">
+      <div class="cta-logo" data-reveal>
+        <div class="cta-logo-aura"></div>
+        <img src="assets/logo.jpeg" alt="Phoenix Mobiles" class="cta-logo-img" width="280" height="210">
+      </div>
+      <p class="sec-eyebrow" data-reveal style="margin-bottom:1rem">Every Device Has a Second Life</p>
+      <h2 class="cta-h2" data-reveal>Your Device Deserves<br><span class="gold-text">the Phoenix Treatment.</span></h2>
+      <p class="cta-sub" data-reveal>Walk in with a broken phone. Walk out with a reborn device.<br>Same-day expert repair. Guaranteed quality. Only at Phoenix Mobiles, Hoskote.</p>
+      <div class="cta-actions" data-reveal>
+        <a href="tel:+917019746943" class="btn-gold btn-xl" data-magnetic>
+          <span class="bg-fill"></span><span class="bg-text">&#128222;&nbsp;+91 70197 46943</span>
+        </a>
+        <a href="https://wa.me/917019746943?text=Hello!%20I%20want%20to%20get%20my%20device%20repaired." target="_blank" rel="noopener" class="btn-outline btn-xl" data-magnetic>
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+      <p class="cta-addr" data-reveal>&#128205; Chikke Gowda Complex, Near T G Extn, Kammavari Pete, Hoskote, Bengaluru 562114</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FOOTER ═══════════════════ -->
+  <footer id="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="foot-brand">
+        <img src="assets/logo.jpeg" alt="Phoenix Mobiles" class="foot-logo" width="56" height="42">
+        <div><strong>Phoenix Mobiles &amp; Services</strong><span>Revive. Repair. Rise.</span></div>
+      </div>
+      <nav class="foot-links" aria-label="Footer navigation">
+        <a href="#services">Services</a><a href="#process">Process</a>
+        <a href="#sales">Shop</a><a href="#about">About</a>
+        <a href="#contact">Contact</a><a href="tel:+917019746943">+91 70197 46943</a>
+      </nav>
+      <p class="foot-copy">&#169; 2024 Phoenix Mobiles &amp; Services · Hoskote, Bengaluru 562114</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/917019746943?text=Hello%20Phoenix%20Mobiles!" target="_blank" rel="noopener" id="floatWA" class="float-wa" aria-label="Chat on WhatsApp">
+    <div class="fwa-pulse"></div>
+    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
